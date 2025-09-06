@@ -82,8 +82,12 @@ services:
     # no need to publish the HTTP server anymore
     ports:
       - "51820:51820/udp"
-    # add to caddy network
+    # force wg network to use eth0 and add to caddy network
     networks:
+      wg:
+        interface_name: eth0
+        ipv4_address: 10.42.42.42
+        ipv6_address: fdcc:ad94:bacf:61a3::2a
       caddy:
     ...
 
